@@ -24,9 +24,10 @@ contract ItemStorage {
     _;
   }
 
-  function registerItem(string memory _name, string memory _link, uint256 _minAmount) public beforeEndTime {    
+  function registerItem(string memory _name, string memory _link, uint256 _minAmount) public beforeEndTime {
     items.push(Item(_name, _link, _minAmount, 0, address(0)));
     uint _id = items.length - 1;
+
     itemToOwner[_id] = msg.sender;
 
     emit NewItem(_name, _link, _minAmount);
